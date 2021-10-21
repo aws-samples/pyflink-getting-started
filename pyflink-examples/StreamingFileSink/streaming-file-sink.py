@@ -44,7 +44,7 @@ if is_local:
         + CURRENT_DIR
         + "/lib/flink-sql-connector-kinesis_2.12-1.13.2;file:///"
         + CURRENT_DIR
-        + "/plugins/flink-s3-fs-hadoop/flink-s3-fs-hadoop-1.11.2.jar",
+        + "/plugins/flink-s3-fs-hadoop/flink-s3-fs-hadoop-1.13.2.jar",
     )
 
     table_env.get_config().get_configuration().set_string(
