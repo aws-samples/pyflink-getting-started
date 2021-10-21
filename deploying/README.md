@@ -16,7 +16,7 @@
    5. AmazonKinesisAnalyticsFullAccess 
 
 3. Navigate to the Kinesis Analytics tab and click Create Application.
-   1. Select Apache Flink 1.11 as the version
+   1. Select Apache Flink 1.13 as the version
    2. Choose the IAM Role you have previously created
    3. Use the Development Template for Application Settings to reduce on costs. This will disable savepoints, reduce the granularity of metrics produced to CloudWatch, and set the application parallelism to `1`. For production workloads you will want different settings.
 
