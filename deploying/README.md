@@ -45,7 +45,7 @@
 
 Please note this solution (CURRENTLY) only works locally--to achieve a pyFlink workload with multiple jarfile entries, you would need to create a single jar that contains all of the required dependencies.
 
-    ![](img/2021-03-23-08-39-51.png)
+![](img/2021-03-23-08-39-51.png)
 
 
     Click `Add group` to create our consumer properties:
