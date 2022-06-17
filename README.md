@@ -69,7 +69,7 @@ This repository will include code examples and walkthroughs for the following co
       Go ahead and install apache-flink since we'll need it for the rest of this exercise.
 
       ```bash
-      (my-new-environment) $ pip install apache-flink
+      (my-new-environment) $ pip install apache-flink==1.13.6
       ```
 
 
