@@ -74,5 +74,12 @@ This repository will include code examples and walkthroughs for the following co
 
 Additional Note: Please validate that you are either using Java 8 or Java 11 when running examples. There are compatibility issues with later versions of Java due to the Py4j libary calling out to the Kinesis Connector.
 
+```bash
+(my-new-environment) jdber@147dda1bd4b4 ~ % java -version
+openjdk version "11.0.9.1" 2020-11-04 LTS
+OpenJDK Runtime Environment Corretto-11.0.9.12.1 (build 11.0.9.1+12-LTS)
+OpenJDK 64-Bit Server VM Corretto-11.0.9.12.1 (build 11.0.9.1+12-LTS, mixed mode)
+```
+
 [Continue on to Getting Started](getting-started/)!
 
