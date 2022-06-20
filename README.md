@@ -72,6 +72,7 @@ This repository will include code examples and walkthroughs for the following co
       (my-new-environment) $ pip install apache-flink==1.13.6
       ```
 
+Additional Note: Please validate that you are either using Java 8 or Java 11 when running examples. There are compatibility issues with later versions of Java due to the Py4j libary calling out to the Kinesis Connector.
 
 [Continue on to Getting Started](getting-started/)!
 
