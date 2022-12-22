@@ -47,7 +47,7 @@ When you're finished, the folder structure should look like:
 
 ```bash
 UDF/
-    lib/flink-sql-connector-kinesis_2.12-1.13.2
+    lib/flink-sql-connector-kinesis-1.15.2.jar
     application_properties.json
     udf.py
 ```
@@ -67,8 +67,6 @@ UDF/
      - Replace `GettingStarted` with `UDF` in all cases.
      - Change `getting-started.py` to `udf.py`
     (Select the group and click Edit Group)
-
-    ![](img/2021-03-23-14-49-48.png)
 
 
 

@@ -6,7 +6,7 @@ Packaging your Pyflink application for deployment onto Kinesis Data Analytics fo
 
 1. Python files `(getting-started.py)`
 2. Any required dependencies such as `boto3`.   
-3. Any included jar files `(lib/flink-sql-connector-kinesis_2.12-1.13.2)`
+3. Any included jar files `(lib/flink-sql-connector-kinesis-1.15.2.jar)`
 
 ### Including Python dependencies
 Before we can archive our files, we need to look at how to include python dependencies in our application.
@@ -33,7 +33,7 @@ my-pyflink-project
        │   │   mymodulefile2.py
             ...
 └───lib
-│    │ flink-sql-connector-kinesis_2.11-1.13.2.jar 
+│    │ flink-sql-connector-kinesis-1.15.2.jar
 │    │ ...
 ...
 ```
@@ -57,7 +57,7 @@ Lastly, you can also include your own dependencies via the same method--placing 
 
 
 ### Jar dependencies
-If your application depends on a connector, be sure to include the connector jar (e.g. `flink-sql-connector-kinesis_2.11-1.13.2.jar`) in your package; under the lib folder in the tree structure shown above. Note that you don't have to name the folder lib, you just have to include it somewhere in your package and also ensure that you specify the jar dependency using the jarfile property as described below. Make sure the connector version corresponds to the appropriate Apache Flink version in your Kinesis Data Analytics application.
+If your application depends on a connector, be sure to include the connector jar (e.g. `flink-sql-connector-kinesis-1.15.2.jar`) in your package; under the lib folder in the tree structure shown above. Note that you don't have to name the folder lib, you just have to include it somewhere in your package and also ensure that you specify the jar dependency using the jarfile property as described below. Make sure the connector version corresponds to the appropriate Apache Flink version in your Kinesis Data Analytics application.
 
 If you have multiple dependencies, you have to create a fat jar and then include it using the jarfile property as described below. This is a Flink requirement as described [here](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/python/dependency_management/#jar-dependencies).
 
@@ -101,7 +101,7 @@ Next, type
   adding: pyflink-examples/GettingStarted/getting-started.py (deflated 68%)
   adding: pyflink-examples/GettingStarted/application_properties.json (deflated 56%)
   adding: pyflink-examples/GettingStarted/lib/ (stored 0%)
-  adding: pyflink-examples/GettingStarted/lib/flink-sql-connector-kinesis_2.12-1.13.2 (deflated 8%)
+  adding: pyflink-examples/GettingStarted/lib/flink-sql-connector-kinesis-1.15.2.jar (deflated 8%)
 ```
 
 This will create a file called `GettingStarted.zip` with the getting-started.py file, a lib folder with the kinesis connector, and an unused application_properties.json--you can choose to omit this if you'd like.
