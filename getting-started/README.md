@@ -72,7 +72,7 @@
    3. Download and set up your Kinesis Connector.
    
    
-      Create a folder within your GettingStarted application called `lib`, and download [the latest minor version of your Apache Flink Version flink-sql-connector jar file from this repo](https://mvnrepository.com/artifact/org.apache.flink/flink-sql-connector-kinesis) into it. It's the Amazon Kinesis SQL Connector for Flink. Make sure you get the Scala 2.12 version of this connector as well. This will need to be bundled with your application on deploy, but ensure it's in your gitignore because adding jars to git is not a good practice.
+      Create a folder within your GettingStarted application called `lib`, and download [the latest minor version of your Apache Flink Version flink-sql-connector jar file from this repo](https://mvnrepository.com/artifact/org.apache.flink/flink-sql-connector-kinesis) into it. It's the Amazon Kinesis SQL Connector for Flink. This will need to be bundled with your application on deploy, but ensure it's in your gitignore because adding jars to git is not a good practice.
 
       ![](../img/2021-03-22-09-12-14.png)
 
