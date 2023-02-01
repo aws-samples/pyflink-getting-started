@@ -10,13 +10,13 @@ This module:
     4. Inserts the source table data into the sink table
 """
 
-from pyflink.table import EnvironmentSettings, StreamTableEnvironment
+from pyflink.table import EnvironmentSettings, TableEnvironment
 import os
 import json
 
 # 1. Creates a Table Environment
 env_settings = EnvironmentSettings.in_streaming_mode()
-table_env = StreamTableEnvironment.create(environment_settings=env_settings)
+table_env = TableEnvironment.create(env_settings)
 
 APPLICATION_PROPERTIES_FILE_PATH = "/etc/flink/application_properties.json"  # on kda
 
