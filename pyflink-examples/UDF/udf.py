@@ -14,15 +14,18 @@ This module:
     5. These tumbling window results are inserted into the Sink table.
 """
 
-from pyflink.table import EnvironmentSettings, TableEnvironment, DataTypes
+from pyflink.table import EnvironmentSettings, StreamTableEnvironment, DataTypes
 from pyflink.table.udf import udf
 import os
 import json
 import logging
 
 # 1. Creates a Table Environment
-env_settings = EnvironmentSettings.in_streaming_mode()
-table_env = TableEnvironment.create(env_settings)
+env_settings = (
+    EnvironmentSettings.new_instance().in_streaming_mode().use_blink_planner().build()
+)
+table_env = StreamTableEnvironment.create(environment_settings=env_settings)
+statement_set = table_env.create_statement_set()
 
 APPLICATION_PROPERTIES_FILE_PATH = "/etc/flink/application_properties.json"  # on kda
 
@@ -37,7 +40,7 @@ if is_local:
     CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
     table_env.get_config().get_configuration().set_string(
         "pipeline.jars",
-        "file:///" + CURRENT_DIR + "/lib/flink-sql-connector-kinesis-1.15.2.jar",
+        "file:///" + CURRENT_DIR + "/lib/flink-sql-connector-kinesis_2.12-1.13.2.jar",
     )
 
 
@@ -92,7 +95,7 @@ def to_upper(i):
     return i.upper()
 
 
-table_env.create_temporary_system_function("to_upper",
+table_env.register_function("to_upper",
                             to_upper)  # Deprecated in 1.12. Use :func:`create_temporary_system_function` instead.
 
 

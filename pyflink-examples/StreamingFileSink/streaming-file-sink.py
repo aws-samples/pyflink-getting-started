@@ -14,14 +14,17 @@ This module:
     5. These tumbling window results are inserted into the Sink table (S3)
 """
 
-from pyflink.table import EnvironmentSettings, TableEnvironment
+from pyflink.table import EnvironmentSettings, StreamTableEnvironment
 from pyflink.table.window import Tumble
 import os
 import json
 
 # 1. Creates a Table Environment
-env_settings = EnvironmentSettings.in_streaming_mode()
-table_env = TableEnvironment.create(env_settings)
+env_settings = (
+    EnvironmentSettings.new_instance().in_streaming_mode().use_blink_planner().build()
+)
+table_env = StreamTableEnvironment.create(environment_settings=env_settings)
+statement_set = table_env.create_statement_set()
 
 
 APPLICATION_PROPERTIES_FILE_PATH = "/etc/flink/application_properties.json"  # on kda
@@ -39,7 +42,7 @@ if is_local:
         "pipeline.jars",
         "file:///"
         + CURRENT_DIR
-        + "/lib/flink-sql-connector-kinesis-1.15.2.jar;file:///"
+        + "/lib/flink-sql-connector-kinesis_2.12-1.13.2.jar;file:///"
         + CURRENT_DIR
         + "/plugins/flink-s3-fs-hadoop/flink-s3-fs-hadoop-1.13.2.jar",
     )

@@ -16,7 +16,7 @@
    5. AmazonKinesisAnalyticsFullAccess 
 
 3. Navigate to the Kinesis Analytics tab and click Create Application.
-   1. Select Apache Flink 1.15 as the version
+   1. Select Apache Flink 1.13 as the version
    2. Choose the IAM Role you have previously created
    3. Use the Development Template for Application Settings to reduce on costs. This will disable savepoints, reduce the granularity of metrics produced to CloudWatch, and set the application parallelism to `1`. For production workloads you will want different settings.
 
@@ -35,7 +35,7 @@
 
     Click `Create group` and create a group called `kinesis.analytics.flink.run.options` with the following key value pairs:
     - `python`: `GettingStarted/getting-started.py`
-    - `jarfile`: `GettingStarted/lib/flink-sql-connector-kinesis-1.15.2.jar`
+    - `jarfile`: `GettingStarted/lib/flink-sql-connector-kinesis_2.12-1.13.2`
 
     The `python` key tells Kinesis Data Analytics for Apache Flink how to execute the file, and that it is a python application. It is the equivalent of locally typing `python getting-started.py` to execute the application.
 
