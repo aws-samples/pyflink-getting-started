@@ -39,9 +39,7 @@ if is_local:
         "pipeline.jars",
         "file:///"
         + CURRENT_DIR
-        + "/lib/flink-sql-connector-kinesis-1.15.2.jar;file:///"
-        + CURRENT_DIR
-        + "/plugins/flink-s3-fs-hadoop/flink-s3-fs-hadoop-1.13.2.jar",
+        + "/lib/flink-sql-connector-kinesis-1.15.2.jar"
     )
 
     table_env.get_config().get_configuration().set_string(
