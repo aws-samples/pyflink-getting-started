@@ -67,8 +67,7 @@ def property_map(props, property_group_id):
         if prop["PropertyGroupId"] == property_group_id:
             return prop["PropertyMap"]
 
-
-def create_table(table_name, stream_name, region, stream_initpos):
+def create_source_table(table_name, stream_name, region, stream_initpos):
     return """ CREATE TABLE {0} (
                 ticker VARCHAR(6),
                 price DOUBLE,
@@ -82,12 +81,32 @@ def create_table(table_name, stream_name, region, stream_initpos):
                 'stream' = '{1}',
                 'aws.region' = '{2}',
                 'scan.stream.initpos' = '{3}',
-                'sink.partitioner-field-delimiter' = ';',
-                'sink.producer.collection-max-count' = '100',
                 'format' = 'json',
                 'json.timestamp-format.standard' = 'ISO-8601'
               ) """.format(
         table_name, stream_name, region, stream_initpos
+    )
+
+
+def create_sink_table(table_name, stream_name, region, stream_initpos):
+    return """ CREATE TABLE {0} (
+                ticker VARCHAR(6),
+                price DOUBLE,
+                event_time TIMESTAMP(3),
+                WATERMARK FOR event_time AS event_time - INTERVAL '5' SECOND
+
+              )
+              PARTITIONED BY (ticker)
+              WITH (
+                'connector' = 'kinesis',
+                'stream' = '{1}',
+                'aws.region' = '{2}',
+                'sink.partitioner-field-delimiter' = ';',
+                'sink.batch.max-size' = '100',
+                'format' = 'json',
+                'json.timestamp-format.standard' = 'ISO-8601'
+              ) """.format(
+        table_name, stream_name, region
     )
 
 
@@ -136,12 +155,12 @@ def main():
 
     # 2. Creates a source table from a Kinesis Data Stream
     table_env.execute_sql(
-        create_table(input_table_name, input_stream, input_region, stream_initpos)
+        create_source_table(input_table_name, input_stream, input_region, stream_initpos)
     )
 
     # 3. Creates a sink table writing to a Kinesis Data Stream
     table_env.execute_sql(
-        create_table(output_table_name, output_stream, output_region, stream_initpos)
+        create_sink_table(output_table_name, output_stream, output_region, stream_initpos)
     )
 
     # 4. Inserts the source table data into the sink table
