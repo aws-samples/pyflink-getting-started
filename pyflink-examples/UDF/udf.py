@@ -41,7 +41,6 @@ if is_local:
     )
 
 
-
 def get_application_properties():
     if os.path.isfile(APPLICATION_PROPERTIES_FILE_PATH):
         with open(APPLICATION_PROPERTIES_FILE_PATH, "r") as file:
@@ -58,27 +57,23 @@ def property_map(props, property_group_id):
             return prop["PropertyMap"]
 
 
-def create_table(table_name, stream_name, region, stream_initpos):
+def create_table(table_name, stream_name, region, stream_initpos = None):
+    init_pos = "\n'scan.stream.initpos' = '{0}',".format(stream_initpos) if stream_initpos is not None else ''
+
     return """ CREATE TABLE {0} (
                 ticker VARCHAR(6),
                 price DOUBLE,
                 event_time TIMESTAMP(3),
                 WATERMARK FOR event_time AS event_time - INTERVAL '5' SECOND
-
               )
               PARTITIONED BY (ticker)
               WITH (
                 'connector' = 'kinesis',
                 'stream' = '{1}',
-                'aws.region' = '{2}',
-                'scan.stream.initpos' = '{3}',
-                'sink.partitioner-field-delimiter' = ';',
-                'sink.producer.collection-max-count' = '100',
+                'aws.region' = '{2}',{3}
                 'format' = 'json',
                 'json.timestamp-format.standard' = 'ISO-8601'
-              ) """.format(
-        table_name, stream_name, region, stream_initpos
-    )
+              ) """.format(table_name, stream_name, region, init_pos)
 
 
 @udf(input_types=[DataTypes.STRING()], result_type=DataTypes.STRING())
@@ -92,8 +87,7 @@ def to_upper(i):
     return i.upper()
 
 
-table_env.create_temporary_system_function("to_upper",
-                            to_upper)  # Deprecated in 1.12. Use :func:`create_temporary_system_function` instead.
+table_env.create_temporary_system_function("to_upper",to_upper)
 
 
 def main():
@@ -103,7 +97,7 @@ def main():
 
     input_stream_key = "input.stream.name"
     input_region_key = "aws.region"
-    input_starting_position_key = "flink.stream.initpos"
+    input_starting_position_key = "scan.stream.initpos"
 
     output_stream_key = "output.stream.name"
     output_region_key = "aws.region"
@@ -126,14 +120,10 @@ def main():
     output_region = output_property_map[output_region_key]
 
     # 2. Creates a source table from a Kinesis Data Stream
-    table_env.execute_sql(
-        create_table(input_table_name, input_stream, input_region, stream_initpos)
-    )
+    table_env.execute_sql(create_table(input_table_name, input_stream, input_region, stream_initpos))
 
     # 3. Creates a sink table writing to a Kinesis Data Stream
-    table_env.execute_sql(
-        create_table(output_table_name, output_stream, output_region, stream_initpos)
-    )
+    table_env.execute_sql(create_table(output_table_name, output_stream, output_region))
 
     # get reference to input_table
     input_table = table_env.from_path(input_table_name)
