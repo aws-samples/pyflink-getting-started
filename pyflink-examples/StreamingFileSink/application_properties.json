@@ -10,7 +10,7 @@
           "PropertyGroupId": "consumer.config.0",
           "PropertyMap": {
             "input.stream.name": "KinesisAnalyticsPenTestInputStream",
-            "flink.stream.initpos": "LATEST",
+            "scan.stream.initpos": "LATEST",
             "aws.region": "us-east-1"
           }
         },
