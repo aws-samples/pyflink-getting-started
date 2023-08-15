@@ -97,4 +97,4 @@
 
    Try out the other examples if you are interested! They are located in [pyflink-examples](../pyflink-examples)
 
-   Continue on to [Packaging](../packaging/) to learn how to package your application for Kinesis Data Analytics for Apache Flink.
+   Continue on to [Packaging](../packaging/) to learn how to package your application for [Amazon Managed Service for Apache Flink](https://aws.amazon.com/managed-service-apache-flink/) (formerly known as Amazon Kinesis Data Analytics).

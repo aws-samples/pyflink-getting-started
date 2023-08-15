@@ -1,23 +1,24 @@
 # Pyflink - The Python Apache Flink Interpreter
 
+
+>  🚨 “August 30, 2023: Amazon Kinesis Data Analytics has been renamed to [Amazon Managed Service for Apache Flink](https://aws.amazon.com/managed-service-apache-flink).”
+
+--------
+
 This repository will include code examples and walkthroughs for the following common tasks:
-
-
-> ### Thank you to [@kremrik](https://github.com/kremrik/python-template/blob/master/setup.md) for the helpful miniconda instructions below.
-
-
-<br>
 
 ### Table of Contents
 1. 💻 &nbsp; &nbsp; [Local Development using Pyflink](getting-started/)
-2. 📦 &nbsp; &nbsp; [Packaging your Pyflink Application for use with Kinesis Data Analytics for Apache Flink](packaging/)
-3. 🚀 &nbsp; &nbsp;  [Deploying and running your Pyflink Application to Kinesis Data Analytics for Apache Flink](deploying/)
-4. 📄 &nbsp; &nbsp; [Logging in a Pyflink Application, and where to see those logs in Kinesis Data Analytics for Apache Flink](logging/)
+2. 📦 &nbsp; &nbsp; [Packaging your Pyflink Application for use with Amazon Managed Service for Apache Flink](packaging/)
+3. 🚀 &nbsp; &nbsp;  [Deploying and running your Pyflink Application to Amazon Managed Service for Apache Flink](deploying/)
+4. 📄 &nbsp; &nbsp; [Logging in a Pyflink Application, and where to see those logs in Amazon Managed Service for Apache Flink](logging/)
 5. 🔧 &nbsp; &nbsp; [Basic Troubleshooting and Monitoring](troubleshooting/)
 
 <br>
 
 --------
+
+> ### Thank you to [@kremrik](https://github.com/kremrik/python-template/blob/master/setup.md) for the helpful miniconda instructions below.
 
 
 ### Prerequisites
