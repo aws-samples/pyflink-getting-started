@@ -58,7 +58,7 @@ UDF/
     ```
 4. Upload this file to S3 in the same bucket as before
 
-5. Navigate back to the Kinesis Data Analytics Management Console and let's reconfigure our application in the following ways:
+5. Navigate back to the Amazon Managed Service for Apache Flink Management Console and let's reconfigure our application in the following ways:
 
     ### Path to Amazon S3 Object:
     - Change to `UDF.zip`
@@ -82,7 +82,7 @@ Click `Update`, and the application will automatically restart picking up the ne
             'ticker': random.choice(['aapl', 'amzn', 'msft', 'intc', 'tbv']),
             'price': round(random.random() * 100, 2)	}
     ```
-7. Within the Kinesis Data Analytics application, find the `Log stream` under the monitoring section and click into the `Log Stream` so we can look at the logs.
+7. Within the Amazon Managed Service for Apache Flink application, find the `Log stream` under the monitoring section and click into the `Log Stream` so we can look at the logs.
 
     ![](img/2021-03-23-14-53-35.png)
 

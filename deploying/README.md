@@ -15,14 +15,14 @@
    4. CloudWatchLogsFullAccess
    5. AmazonKinesisAnalyticsFullAccess 
 
-3. Navigate to the Kinesis Analytics tab and click Create Application.
+3. Navigate to the Amazon Managed Service for Apache Flink tab and click Create Application.
    1. Select Apache Flink 1.15 as the version
    2. Choose the IAM Role you have previously created
    3. Use the Development Template for Application Settings to reduce on costs. This will disable savepoints, reduce the granularity of metrics produced to CloudWatch, and set the application parallelism to `1`. For production workloads you will want different settings.
 
     ![](img/2021-03-22-15-50-59.png)
 
-4. After clicking `Create Application`, the page should refresh, prompting you to `Configure` the application. This is where we will tell Kinesis Data Analytics where our `.zip` file is located, as well as how to load our lib files and our environment variables.
+4. After clicking `Create Application`, the page should refresh, prompting you to `Configure` the application. This is where we will tell Amazon Managed Service for Apache Flink where our `.zip` file is located, as well as how to load our lib files and our environment variables.
 
     Click `Configure`.
 
@@ -37,7 +37,7 @@
     - `python`: `GettingStarted/getting-started.py`
     - `jarfile`: `GettingStarted/lib/flink-sql-connector-kinesis-1.15.2.jar`
 
-    The `python` key tells Kinesis Data Analytics for Apache Flink how to execute the file, and that it is a python application. It is the equivalent of locally typing `python getting-started.py` to execute the application.
+    The `python` key tells Amazon Managed Service for Apache Flink how to execute the file, and that it is a python application. It is the equivalent of locally typing `python getting-started.py` to execute the application.
 
     The `jarfile` key points to our lib folder dependencies, of which we have one. If you have mulitple, you can delimit them by a `;` semicolon character thusly:
 

@@ -2,7 +2,7 @@
 
 ### Ensure you have completed or understand all the content within [getting-started](../getting-started/README.md) before continuing.
 
-Packaging your Pyflink application for deployment onto Kinesis Data Analytics for Apache Flink requires three things:
+Packaging your Pyflink application for deployment onto Amazon Managed Service for Apache Flink requires three things:
 
 1. Python files `(getting-started.py)`
 2. Any required dependencies such as `boto3`.   
@@ -57,11 +57,11 @@ Lastly, you can also include your own dependencies via the same method--placing 
 
 
 ### Jar dependencies
-If your application depends on a connector, be sure to include the connector jar (e.g. `flink-sql-connector-kinesis-1.15.2.jar`) in your package; under the lib folder in the tree structure shown above. Note that you don't have to name the folder lib, you just have to include it somewhere in your package and also ensure that you specify the jar dependency using the jarfile property as described below. Make sure the connector version corresponds to the appropriate Apache Flink version in your Kinesis Data Analytics application.
+If your application depends on a connector, be sure to include the connector jar (e.g. `flink-sql-connector-kinesis-1.15.2.jar`) in your package; under the lib folder in the tree structure shown above. Note that you don't have to name the folder lib, you just have to include it somewhere in your package and also ensure that you specify the jar dependency using the jarfile property as described below. Make sure the connector version corresponds to the appropriate Apache Flink version in your Amazon Managed Service for Apache Flink application.
 
 If you have multiple dependencies, you have to create a fat jar and then include it using the jarfile property as described below. This is a Flink requirement as described [here](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/python/dependency_management/#jar-dependencies).
 
-Important: In addition to including the jar dependency in your package, you have to specify dependencies using the jarfile property in the kinesis.analytics.flink.run.options property group when you create your application. Please see the "Configure the Application" section [here](https://docs.aws.amazon.com/kinesisanalytics/latest/java/gs-python-createapp.html#gs-python-7).
+Important: In addition to including the jar dependency in your package, you have to specify dependencies using the jarfile property in the kinesis.analytics.flink.run.options property group when you create your application. Please see the "Configure the Application" section [here](https://docs.aws.amazon.com/managed-flink/latest/java/gs-python-createapp.html#gs-python-7).
 
 
 
@@ -69,12 +69,12 @@ Important: In addition to including the jar dependency in your package, you have
 
 What we need to do is `zip` these files into an archive, and then upload them to S3. 
 
-**DON'T** use the compress tool in Finder or Windows Explorer, which will create an invalid code package for Kinesis Data Analytics.
+**DON'T** use the compress tool in Finder or Windows Explorer, which will create an invalid code package for Amazon Managed Service for Apache Flink.
 
 | 📓 Add `.zip`  to your .gitignore to not mistakenly commit zip files to git.  |
 |-----------------------------------------|
 
-| ⚠️ Make sure you modify the sink back to _not_ use the print connector from Getting Started, and rather write to Kinesis since we'll be running on Kinesis Data Analytics and not locally. |
+| ⚠️ Make sure you modify the sink back to _not_ use the print connector from Getting Started, and rather write to Kinesis since we'll be running on Amazon Managed Service for Apache Flink and not locally. |
 |-----------------------------------------|
 
 
@@ -107,6 +107,6 @@ Next, type
 This will create a file called `GettingStarted.zip` with the getting-started.py file, a lib folder with the kinesis connector, and an unused application_properties.json--you can choose to omit this if you'd like.
 
 
-This is how you package a pyflink project for Kinesis Data Analytics for Apache Flink!
+This is how you package a pyflink project for [Amazon Managed Service for Apache Flink](https://aws.amazon.com/managed-service-apache-flink/)!
 
 Now let's [Deploy](../deploying/) the application.

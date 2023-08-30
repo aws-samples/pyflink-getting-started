@@ -3,7 +3,7 @@
 
 Troubleshooting running Apache Flink applications can be challenging due to the distributed nature of the processing, the application logs being split between task managers and job managers, and the obfuscation of memory management within Apache Flink.
 
-Kinesis Data Analytics helps immensely with this by centralizing the logs of the application in Amazon CloudWatch, and exporting metrics to CloudWatch metrics for fine-grained monitoring capabilities and integrations with other AWS services. 
+Amazon Managed Service for Apache Flink helps immensely with this by centralizing the logs of the application in Amazon CloudWatch, and exporting metrics to CloudWatch metrics for fine-grained monitoring capabilities and integrations with other AWS services. 
 
 ## That being said,
 If you can avoid troubleshooting your applications while they are running, it is preferred. This would be achieved by thoroughly testing your application both [locally](https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/testing.html) as well as performance testing in a production-like environment in terms of throughput and data representation.
@@ -22,7 +22,7 @@ Here are the steps you can take to check for errors in your application and pote
       - "But my application doesn't have any exceptions!"
         - More often than not, an application showing poor performance in checkpoints / reading from a stream are hints at the root cause, user exceptions. If nothing else, use this tactic to eliminate this from the list of possibilities.
     2. The easiest way to get back to your CloudWatch logs is to follow the steps we performed in the `logging` step:
-       -  Within the Kinesis Data Analytics application, find the `Log stream` under the monitoring section and click into the `Log Stream` so we can look at the logs.
+       -  Within the Amazon Managed Service for Apache Flink application, find the `Log stream` under the monitoring section and click into the `Log Stream` so we can look at the logs.
 
             ![](../logging/img/2021-03-23-14-53-35.png)
 
@@ -81,7 +81,7 @@ Here are the steps you can take to check for errors in your application and pote
 <br>
 
 
-There are two other relatively simple ways to troubleshoot and respond to events within your Apache Flink application running on Kinesis Data Analytics for Apache Flink.
+There are two other relatively simple ways to troubleshoot and respond to events within your Apache Flink application running on Amazon Managed Service for Apache Flink.
 
 The first being using CloudWatch metrics. Since this strategy doesn't differ too much from troubleshooting and monitoring Java / Scala Apache Flink applications, I will simply link to the documentation on that piece, along with using the Flink Dashboard to troubleshoot applications.
 
@@ -89,6 +89,6 @@ The first being using CloudWatch metrics. Since this strategy doesn't differ too
 - ## [Advanced Monitoring using CloudWatch Metrics](https://streaming-analytics.workshop.aws/flink-on-kda/advanced-scale-and-monitor/monitoring/metrics-deep-dive.html)
 - ## [Using the Flink Web Dashboard to identify issues with your applications](https://streaming-analytics.workshop.aws/flink-on-kda/advanced-scale-and-monitor/flink-dashboard.html)
 
-**Please** review these for more details on how to properly monitor your Kinesis Data Analytics for Apache Flink application.
+**Please** review these for more details on how to properly monitor your Amazon Managed Service for Apache Flink application.
 
 Any questions? File a Pull Request or Issue upon this repository for prompt feedback. Thanks!
