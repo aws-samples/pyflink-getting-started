@@ -4,6 +4,7 @@ import random
 import boto3
 
 STREAM_NAME = "input-stream"
+STREAM_REGION = "us-east-1"
 
 
 def get_data():
@@ -24,4 +25,4 @@ def generate(stream_name, kinesis_client):
 
 
 if __name__ == '__main__':
-    generate(STREAM_NAME, boto3.client('kinesis'))
+    generate(STREAM_NAME, boto3.client('kinesis', region_name=STREAM_REGION))
