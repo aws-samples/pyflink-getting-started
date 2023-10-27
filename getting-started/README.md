@@ -52,6 +52,8 @@
       On line 12, change the `input.stream.name` to be your input stream.
 
       On line 20, change the `output.stream.name` to be your output stream.
+
+      On lines 14 and 22, change `aws.region` to match the regions of your streams. 
       
    Hit save.
 
@@ -72,7 +74,7 @@
    3. Download and set up your Kinesis Connector.
    
    
-      Create a folder within your GettingStarted application called `lib`, and download [the latest minor version of your Apache Flink Version flink-sql-connector jar file from this repo](https://mvnrepository.com/artifact/org.apache.flink/flink-sql-connector-kinesis) into it. It's the Amazon Kinesis SQL Connector for Flink. This will need to be bundled with your application on deploy, but ensure it's in your gitignore because adding jars to git is not a good practice.
+      Create a folder within your GettingStarted application called `lib`, and download the [1.15.2 version of the flink-sql-connector from the Maven Central repo](https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-kinesis/1.15.2/flink-sql-connector-kinesis-1.15.2.jar). This will need to be bundled with your application on deploy, but ensure it's in your gitignore because adding jars to git is not a good practice.
 
       ![](../img/2021-03-22-09-12-14.png)
 
@@ -84,7 +86,7 @@
    5. Now, right click into the code and hit `Run 'getting-started'` to start the code execution.
 
 
-   6. But wait! We need to send data to the stream. Go into the `datagen` folder in this project, open `stock.py`, right click and run this application as well to begin sending data to your application locally.
+   6. But wait! We need to send data to the stream. Go into the `datagen` folder in this project, open `stock.py`. Check that `STREAM_NAME` and `STREAM_REGION` match those of your input stream, otherwise change them. Then, right click and run this application as well to begin sending data to your application locally.
 
 
    You may need to install `boto3`-- Simply type `conda install boto3`.
